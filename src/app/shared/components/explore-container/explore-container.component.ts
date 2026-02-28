@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-explore-container',
@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./explore-container.component.scss'],
 })
 export class ExploreContainerComponent {
-  @Input() name?: string;
+  name = input.required<string>();
+  description = input.required<string>();
 }
