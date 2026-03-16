@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FeaturePageComponent } from '../../shared/components/feature-page/feature-page.component';
 
 @Component({
-  selector: 'app-action',
+  selector: 'app-reservations',
   standalone: true,
-  templateUrl: 'action.page.html',
-  styleUrls: ['action.page.scss'],
-  imports: [FeaturePageComponent],
+  templateUrl: 'reservations.page.html',
+  styleUrls: ['reservations.page.scss'],
+  imports: [FeaturePageComponent]
 })
-export class ActionPage {
+export class ReservationsPage {
 }

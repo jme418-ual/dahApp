@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FeaturePageComponent } from '../../shared/components/feature-page/feature-page.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-products',
   standalone: true,
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: 'products.page.html',
+  styleUrls: ['products.page.scss'],
   imports: [FeaturePageComponent],
 })
-export class HomePage {
+export class ProductsPage {
 }

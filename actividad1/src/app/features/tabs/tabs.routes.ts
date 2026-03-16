@@ -7,23 +7,23 @@ export const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: 'clients',
         loadComponent: () =>
-          import('../home/home.page').then((m) => m.HomePage),
+          import('../clients/clients.page').then((m) => m.ClientsPage),
       },
       {
-        path: 'list',
+        path: 'reservations',
         loadComponent: () =>
-          import('../list/list.page').then((m) => m.ListPage),
+          import('../reservations/reservations.page').then((m) => m.ReservationsPage),
       },
       {
-        path: 'action',
+        path: 'products',
         loadComponent: () =>
-          import('../action/action.page').then((m) => m.ActionPage),
+          import('../products/products.page').then((m) => m.ProductsPage),
       },
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'clients',
         pathMatch: 'full',
       },
     ],
