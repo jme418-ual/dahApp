@@ -1,20 +1,25 @@
 <ion-tabs>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-tab-bar slot="top">
+    <div class="app-title">DAH APP</div>
+    
+    <div class="tabs-center">
+      <ion-tab-button tab="clients" href="/tabs/clients">
+        <ion-label><ion-icon name="people"></ion-icon> Clientes</ion-label>
+      </ion-tab-button>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="clients" href="/tabs/clients">
-      <ion-icon aria-hidden="true" name="people"></ion-icon>
-      <ion-label>Clients</ion-label>
-    </ion-tab-button>
+      <ion-tab-button tab="reservations" href="/tabs/reservations">
+        <ion-label><ion-icon name="calendar"></ion-icon> Reservas</ion-label>
+      </ion-tab-button>
 
-    <ion-tab-button tab="reservations" href="/tabs/reservations">
-      <ion-icon aria-hidden="true" name="ticket"></ion-icon>
-      <ion-label>Reservations</ion-label>
-    </ion-tab-button>
+      <ion-tab-button tab="products" href="/tabs/products">
+        <ion-label><ion-icon name="cube"></ion-icon> Productos</ion-label>
+      </ion-tab-button>
+    </div>
 
-    <ion-tab-button tab="products" href="/tabs/products">
-      <ion-icon aria-hidden="true" name="bag"></ion-icon>
-      <ion-label>Products</ion-label>
-    </ion-tab-button>
+    <ion-button (click)="logout()" fill="clear" class="logout-btn">
+      Cerrar Sesión
+    </ion-button>
   </ion-tab-bar>
+
+  <ion-router-outlet></ion-router-outlet>
 </ion-tabs>

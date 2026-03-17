@@ -1,27 +1,87 @@
+// Explore Container - Modern Empty State Design
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(50% + 3px);
+  top: 50%;
   transform: translateY(-50%);
+  padding: var(--spacing-2xl);
+  animation: fadeInUp 0.6s ease-out;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 3s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 #container strong {
-  font-size: 20px;
-  line-height: 26px;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 700;
+  font-family: var(--font-display);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  display: block;
+  margin-bottom: var(--spacing-md);
 }
 
 #container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-neutral-600);
   margin: 0;
+  font-weight: 500;
+  font-family: var(--font-body);
 }
 
 #container a {
   text-decoration: none;
+  color: var(--color-primary-base);
+  font-weight: 600;
+  position: relative;
+  transition: all var(--transition-base);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+  }
+  
+  &:hover {
+    color: var(--color-primary-dark);
+    
+    &::after {
+      transform: scaleX(1);
+    }
+  }
 }

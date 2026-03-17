@@ -1,0 +1,204 @@
+// Reservations Page - Modern Card Timeline Design
+:host {
+  pointer-events: auto;
+}
+
+ion-content {
+  --overflow: visible;
+  --padding-top: var(--spacing-xl);
+  --padding-bottom: var(--spacing-xl);
+  --padding-start: var(--spacing-md);
+  --padding-end: var(--spacing-md);
+  --background: transparent;
+}
+
+.reservations-list {
+  --background: var(--ion-background-color);
+  background: var(--ion-background-color);
+  padding: 0;
+  margin: 0;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.reservation-card {
+  margin: var(--spacing-sm) var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+  border-radius: var(--radius-xl);
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  
+  // Deshabilitar efectos de Ionic por defecto
+  &:hover {
+    transform: none;
+    box-shadow: var(--glass-shadow);
+    border-color: rgba(255, 184, 77, 0.5);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: var(--gradient-accent);
+    transform: scaleY(0);
+  }
+
+  ion-card-content {
+    padding: var(--spacing-lg);
+  }
+}
+
+.reservation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--glass-border);
+
+  .client-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+
+    ion-icon {
+      font-size: 32px;
+      color: var(--color-primary-base);
+      padding: var(--spacing-sm);
+      background: rgba(255, 107, 107, 0.1);
+      border-radius: var(--radius-md);
+    }
+
+    h2 {
+      font-size: 19px;
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--ion-text-color);
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+  }
+
+  .status-badge {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    background: var(--gradient-secondary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  // Custom badge colors for reservation status
+.status-badge[color="green"] {
+  background: #2ecc40;
+  color: #fff;
+  border-color: #2ecc40;
+}
+.status-badge[color="orange"] {
+  background: #ff9800;
+  color: #fff;
+  border-color: #ff9800;
+}
+.status-badge[color="red"] {
+  background: #e74c3c;
+  color: #fff;
+  border-color: #e74c3c;
+}
+}
+
+.reservation-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-left: var(--spacing-sm);
+
+  .detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+
+    ion-icon {
+      font-size: 16px;
+      color: var(--color-primary-base);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: 14px;
+      color: var(--color-neutral-400);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    &.notes span {
+      font-style: italic;
+      color: var(--color-neutral-400);
+    }
+  }
+}
+
+.action-section {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  margin-top: 8px;
+
+  .main-action-button {
+    min-width: 200px;
+    font-weight: 600;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.3);
+    --ripple-color: transparent;
+  }
+}
+
+@media (max-width: 576px) {
+  ion-content {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
+  }
+
+  .reservations-list {
+    padding: 0;
+  }
+
+  .reservation-card ion-card-content {
+    padding: 14px;
+  }
+
+  .reservation-header .client-info h2 {
+    font-size: 16px;
+  }
+
+  .reservation-details {
+    margin-left: 36px;
+
+    .detail-item span {
+      font-size: 13px;
+    }
+  }
+
+  .action-section .main-action-button {
+    min-width: 100%;
+  }
+}

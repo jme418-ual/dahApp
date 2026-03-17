@@ -1,5 +1,27 @@
-<app-feature-page
-  title="Clients"
-  name="Clients page"
-  description="Welcome to dahApp!"
-></app-feature-page>
+<ion-content>
+  <ion-list class="clients-list" lines="none">
+    @for (client of clients; track client.id) {
+      <ion-item
+        [routerLink]="['/client-detail', client.id]"
+        button
+        detail="true"
+        class="client-item"
+      >
+        <div class="client-avatar" slot="start">
+          <ion-icon name="person"></ion-icon>
+        </div>
+        <ion-label>
+          <h2>{{ client.name }}</h2>
+          <p>
+            <ion-icon name="mail"></ion-icon>
+            {{ client.email }}
+          </p>
+          <p>
+            <ion-icon name="call"></ion-icon>
+            {{ client.phone }}
+          </p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>

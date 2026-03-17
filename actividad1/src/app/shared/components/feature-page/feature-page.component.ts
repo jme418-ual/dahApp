@@ -12,5 +12,5 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
 export class FeaturePageComponent {
   title = input.required<string>();
   name = input.required<string>();
-  description = input('');
+  description = input.required<string>();
 }

@@ -1,5 +1,44 @@
-<app-feature-page
-  title="Reservations"
-  name="Reservations page"
-  description="This page shows a clear reservations of items"
-></app-feature-page>
+<ion-content>
+  <ion-list class="reservations-list" lines="none">
+    @for (reservation of reservations; track reservation.id) {
+      <ion-card class="reservation-card">
+        <ion-card-content>
+          <div class="reservation-header">
+            <div class="client-info">
+              <ion-icon name="person"></ion-icon>
+              <h2>{{ reservation.clientName }}</h2>
+            </div>
+            <ion-badge [color]="getStatusColor(reservation.status)" class="status-badge">
+              {{ getStatusText(reservation.status) }}
+            </ion-badge>
+          </div>
+
+          <div class="reservation-details">
+            <div class="detail-item">
+              <ion-icon name="calendar"></ion-icon>
+              <span>{{ formatDate(reservation.date) }}</span>
+            </div>
+            @if (reservation.notes) {
+              <div class="detail-item notes">
+                <ion-icon name="documentText"></ion-icon>
+                <span>{{ reservation.notes }}</span>
+              </div>
+            }
+          </div>
+        </ion-card-content>
+      </ion-card>
+    }
+  </ion-list>
+
+  <div class="action-section">
+    <ion-button 
+      (click)="goToNewReservation()"
+      class="main-action-button"
+      color="primary"
+      size="large"
+    >
+      <ion-icon name="add" slot="start"></ion-icon>
+      Nueva Reserva
+    </ion-button>
+  </div>
+</ion-content>
