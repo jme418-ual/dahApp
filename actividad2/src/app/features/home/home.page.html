@@ -1,0 +1,56 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Movie Finder</ion-title>
+    <ion-badge slot="end" color="primary" class="favorites-badge">
+      {{ movieService.favoritesCount() }}
+    </ion-badge>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="home-content">
+  <ion-searchbar
+    placeholder="Busca una película"
+    debounce="500"
+    (ionInput)="onSearch($event)">
+  </ion-searchbar>
+
+  @if (movieService.loading()) {
+    <div class="loading-wrapper">
+      <ion-spinner></ion-spinner>
+      <p>Cargando...</p>
+    </div>
+  }
+
+  @if (!movieService.loading() && movieService.movies().length > 0) {
+    <ion-list>
+      @for (movie of movieService.movies(); track movie.imdbID) {
+        <ion-item [routerLink]="['/details', movie.imdbID]" detail="true">
+          <ion-thumbnail slot="start">
+            <img [src]="getPoster(movie.Poster)" [alt]="movie.Title" />
+          </ion-thumbnail>
+
+          <ion-label>
+            <h2>{{ movie.Title }}</h2>
+            <p>{{ movie.Year }} · {{ movie.Type }}</p>
+          </ion-label>
+
+          <ion-icon
+            slot="end"
+            [icon]="movieService.isFavorite(movie.imdbID) ? heart : heartOutline"
+            [color]="movieService.isFavorite(movie.imdbID) ? 'danger' : 'medium'">
+          </ion-icon>
+        </ion-item>
+      }
+    </ion-list>
+  } @else if (!movieService.loading() && movieService.searchTerm()) {
+    <div id="container">
+      <strong>No se encontraron resultados</strong>
+      <p>Prueba con otro título.</p>
+    </div>
+  } @else {
+    <div id="container">
+      <strong>Busca tu próxima película</strong>
+      <p>Introduce un término para comenzar.</p>
+    </div>
+  }
+</ion-content>

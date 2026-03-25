@@ -1,0 +1,52 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Detalle</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleFavorite()">
+        <ion-icon
+          slot="icon-only"
+          [icon]="isFavorite() ? heart : heartOutline"
+          [color]="isFavorite() ? 'danger' : 'medium'">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="details-content">
+  @if (movieService.loading()) {
+    <div class="loading-wrapper">
+      <ion-spinner></ion-spinner>
+      <p>Cargando detalle...</p>
+    </div>
+  }
+
+  @if (!movieService.loading() && movieService.currentMovie(); as movie) {
+    <ion-card class="movie-detail-card">
+      <img [src]="getPoster(movie.Poster)" [alt]="movie.Title" />
+
+      <ion-card-header>
+        <ion-card-title>{{ movie.Title }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><strong>Año:</strong> {{ movie.Year }}</p>
+        <p><strong>Género:</strong> {{ movie.Genre }}</p>
+        <p><strong>Director:</strong> {{ movie.Director }}</p>
+        <p><strong>Actores:</strong> {{ movie.Actors }}</p>
+        <p><strong>IMDb:</strong> {{ movie.imdbRating }}</p>
+        <p><strong>Duración:</strong> {{ movie.Runtime }}</p>
+        <p><strong>Sinopsis:</strong> {{ movie.Plot }}</p>
+
+        <ion-button expand="block" (click)="toggleFavorite()">
+          {{ isFavorite() ? 'Quitar de favoritos' : 'Añadir a favoritos' }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  }
+</ion-content>
