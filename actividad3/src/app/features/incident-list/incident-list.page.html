@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Listado de incidencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="list-content">
+  <div class="page-wrapper">
+    <ion-card>
+      <ion-card-content>
+        <h2>Incidencias registradas</h2>
+
+        @if (incidents().length === 0) {
+          <p class="empty-text">Todavía no hay incidencias guardadas.</p>
+        }
+
+        @if (incidents().length > 0) {
+          <ion-list>
+            @for (incident of incidents(); track incident.id) {
+              <ion-item button detail="true" (click)="onItemClick()">
+                <ion-label>
+                  <h3>Incidencia {{ incident.id.slice(0, 8) }}</h3>
+                  <p>Lat: {{ incident.latitude }} | Lng: {{ incident.longitude }}</p>
+                  <p>{{ incident.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+                </ion-label>
+              </ion-item>
+            }
+          </ion-list>
+        }
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

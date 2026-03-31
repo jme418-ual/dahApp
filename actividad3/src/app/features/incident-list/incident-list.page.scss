@@ -1,0 +1,103 @@
+.list-content {
+  --background: var(--gradient-background);
+}
+
+.page-wrapper {
+  padding: var(--spacing-lg);
+}
+
+ion-card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: var(--spacing-lg);
+}
+
+.empty-text {
+  text-align: center;
+  color: var(--color-neutral-600);
+}
+
+// Glass style item containers
+ion-item {
+  --padding-start: var(--spacing-lg);
+  --padding-end: var(--spacing-lg);
+  --inner-padding-end: 0;
+  --min-height: 100px;
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  --background: transparent;
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255, 107, 107, 0.5);
+    transform: translateY(-2px);
+  }
+
+  // Gradient accent line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--gradient-primary);
+  }
+}
+
+ion-label {
+  font-family: var(--font-body);
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ion-text-color);
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-display);
+    letter-spacing: -0.3px;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: var(--color-neutral-500);
+    margin: var(--spacing-xs) 0;
+    font-weight: 500;
+  }
+}
+
+// Empty state styling
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  animation: fadeInUp 0.6s ease-out;
+
+  ion-icon {
+    font-size: 64px;
+    color: var(--color-neutral-300);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.3rem;
+  }
+
+  p {
+    color: var(--color-neutral-500);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}

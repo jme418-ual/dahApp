@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Gestión de incidencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="home-content">
+  <div class="page-wrapper">
+    <ion-card class="hero-card">
+      <ion-card-content>
+        <h1>Registro de incidencias</h1>
+        <p>
+          Esta aplicación permite registrar incidencias capturando una fotografía
+          desde la cámara del dispositivo y guardando automáticamente la
+          geolocalización en la que se tomó.
+        </p>
+
+        <div class="button-group">
+          <ion-button expand="block" routerLink="/new-incident">
+            Nueva incidencia
+          </ion-button>
+
+          <ion-button expand="block" fill="outline" routerLink="/incidents">
+            Ver listado
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nueva incidencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="incident-content">
+  <div class="page-wrapper">
+    <ion-card class="capture-card">
+      <ion-card-content>
+        <h2>Captura de evidencia</h2>
+
+        @if (!hasPhoto()) {
+          <div class="placeholder-box">
+            <img
+              src="assets/img/no-photo-placeholder.png"
+              alt="Todavía no se ha obtenido ninguna foto"
+            />
+            <p>Todavía no se ha obtenido ninguna foto.</p>
+          </div>
+        }
+
+        @if (hasPhoto()) {
+          <div class="photo-result">
+            <img [src]="photoUri()!" alt="Foto de la incidencia" class="result-image" />
+
+            <ion-text>
+              <p><strong>Latitud:</strong> {{ latitude() }}</p>
+              <p><strong>Longitud:</strong> {{ longitude() }}</p>
+            </ion-text>
+          </div>
+        }
+
+        <ion-button expand="block" (click)="captureIncident()">
+          Obtener foto y ubicación
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
