@@ -8,7 +8,10 @@ import {
   IonCard,
   IonCardContent,
   IonText,
+  IonButtons,
+  IonBackButton,
 } from '@ionic/angular/standalone';
+import { Router } from '@angular/router';
 import { CameraPhotoService } from '../../core/services/camera-photo.service';
 import { IncidentStorageService } from '../../core/services/incident-storage.service';
 import { ToastService } from '../../core/services/toast.service';
@@ -27,12 +30,15 @@ import { ToastService } from '../../core/services/toast.service';
     IonCard,
     IonCardContent,
     IonText,
+    IonButtons,
+    IonBackButton,
   ],
 })
 export class IncidentCreatePage implements OnInit {
   private cameraPhotoService = inject(CameraPhotoService);
   private incidentStorageService = inject(IncidentStorageService);
   private toastService = inject(ToastService);
+  private router = inject(Router);
 
   readonly photoUri = signal<string | null>(null);
   readonly latitude = signal<number | null>(null);
@@ -65,5 +71,9 @@ export class IncidentCreatePage implements OnInit {
       console.error(error);
       await this.toastService.show('No se pudo capturar la incidencia');
     }
+  }
+
+  goBack(): void {
+    this.router.navigate(['']);
   }
 }

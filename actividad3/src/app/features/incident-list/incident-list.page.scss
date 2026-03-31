@@ -1,14 +1,25 @@
 .list-content {
-  --background: var(--gradient-background);
+  --background: white !important;
+  background: white !important;
 }
 
 .page-wrapper {
   padding: var(--spacing-lg);
+  background: white;
 }
 
 ion-card {
   max-width: 800px;
   margin: 0 auto;
+  --background: white;
+  background: white;
+  border: none;
+  box-shadow: none;
+}
+
+ion-list {
+  --background: white;
+  background: white;
 }
 
 h2 {
@@ -28,31 +39,15 @@ ion-item {
   --min-height: 100px;
   margin-bottom: var(--spacing-md);
   border-radius: var(--radius-lg);
-  --background: transparent;
-  background: var(--glass-background);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  --background: white;
+  background: white !important;
   position: relative;
   overflow: hidden;
   transition: all var(--transition-base);
 
   &:hover {
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(255, 107, 107, 0.5);
+    border-color: rgba(255, 107, 107, 0.8);
     transform: translateY(-2px);
-  }
-
-  // Gradient accent line
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: var(--gradient-primary);
   }
 }
 

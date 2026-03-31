@@ -9,7 +9,10 @@ import {
   IonLabel,
   IonCard,
   IonCardContent,
+  IonButtons,
+  IonBackButton,
 } from '@ionic/angular/standalone';
+import { Router } from '@angular/router';
 import { IncidentStorageService } from '../../core/services/incident-storage.service';
 import { ToastService } from '../../core/services/toast.service';
 import { DatePipe } from '@angular/common';
@@ -29,12 +32,15 @@ import { DatePipe } from '@angular/common';
     IonLabel,
     IonCard,
     IonCardContent,
+    IonButtons,
+    IonBackButton,
     DatePipe,
   ],
 })
 export class IncidentListPage implements OnInit {
   private incidentStorageService = inject(IncidentStorageService);
   private toastService = inject(ToastService);
+  private router = inject(Router);
 
   readonly incidents = this.incidentStorageService.incidents;
 
@@ -44,5 +50,9 @@ export class IncidentListPage implements OnInit {
 
   async onItemClick(): Promise<void> {
     await this.toastService.show('En construcción');
+  }
+
+  goBack(): void {
+    this.router.navigate(['']);
   }
 }
