@@ -21,9 +21,7 @@
             />
             <p>Todavía no se ha obtenido ninguna foto.</p>
           </div>
-        }
-
-        @if (hasPhoto()) {
+        } @else {
           <div class="photo-result">
             <img [src]="photoUri()!" alt="Foto de la incidencia" class="result-image" />
 
