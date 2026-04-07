@@ -1,0 +1,17 @@
+.vertical-divider {
+  width: 1px;
+  height: 24px;
+  background-color: lightgray;
+  margin: 0 8px;
+  align-self: center;
+}
+
+ion-item {
+  --border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+ion-thumbnail img {
+  border-radius: 12px;
+  object-fit: cover;
+}

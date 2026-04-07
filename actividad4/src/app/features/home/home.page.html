@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Store App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-content">
+  <div class="home-container">
+    <h1>Bienvenido</h1>
+    <p>Accede a tu zona privada o consulta los productos disponibles.</p>
+
+    <ion-button expand="block" (click)="goToLogin()">
+      Iniciar sesión
+    </ion-button>
+
+    <ion-button expand="block" fill="outline" (click)="goToPublicProducts()">
+      Ver productos a la venta
+    </ion-button>
+  </div>
+</ion-content>

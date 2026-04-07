@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle del producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (product(); as p) {
+    <ion-card class="product-detail-card">
+      <img [src]="p.imageUrl" [alt]="p.name" />
+
+      <ion-card-header>
+        <ion-card-title>{{ p.name }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>{{ p.description }}</p>
+      </ion-card-content>
+    </ion-card>
+  } @else {
+    <ion-card>
+      <ion-card-content>
+        No se ha encontrado el producto.
+      </ion-card-content>
+    </ion-card>
+  }
+</ion-content>

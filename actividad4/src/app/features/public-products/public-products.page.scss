@@ -1,0 +1,9 @@
+ion-item {
+  --border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+}
+
+ion-thumbnail img {
+  border-radius: 12px;
+  object-fit: cover;
+}
