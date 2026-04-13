@@ -42,11 +42,12 @@ describe('ClientsPage', () => {
     expect(text).toContain(firstClient.phone);
   });
 
-  it('should create router links to client detail', () => {
-    const items = Array.from(element.querySelectorAll('ion-item'));
-    expect(items.length).toBeGreaterThan(0);
+  it('should render client icons in the list', () => {
+    const icons = Array.from(element.querySelectorAll('ion-icon'))
+      .map(icon => icon.getAttribute('name'));
 
-    const firstLink = items[0].getAttribute('ng-reflect-router-link');
-    expect(firstLink).toContain('/client-detail');
+    expect(icons).toContain('person');
+    expect(icons).toContain('mail');
+    expect(icons).toContain('call');
   });
 });

@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/clients" data-testid="client-detail-back"></ion-back-button>
-      <p class="client-id" data-testid="client-detail-id">ID: {{ client.id }}</p>
+      <p class="client-id" data-testid="client-detail-id">ID: {{ client?.id }}</p>
     </ion-buttons>
     <ion-title>Detalle del Cliente</ion-title>
   </ion-toolbar>

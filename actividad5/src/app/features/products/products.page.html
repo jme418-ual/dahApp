@@ -1,7 +1,7 @@
 <ion-content>
   <div class="products-grid">
     @for (product of products; track product.id) {
-      <ion-card class="product-card" [attr.data-testid]="'product-item-' + product.id"></ion-card>
+      <ion-card class="product-card" [attr.data-testid]="'product-item-' + product.id">
         <ion-card-content>
           <div class="product-header">
             <div class="product-icon">

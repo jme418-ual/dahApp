@@ -14,10 +14,11 @@
       <ion-tab-button tab="products" href="/tabs/products" data-testid="tab-products">
         <ion-label><ion-icon name="cube"></ion-icon> Productos</ion-label>
       </ion-tab-button>
+    </div>
 
-      <ion-button (click)="logout()" fill="clear" class="logout-btn" data-testid="tabs-logout">
-        Cerrar Sesión
-      </ion-button>
+    <ion-button (click)="logout()" fill="clear" class="logout-btn" data-testid="tabs-logout">
+      Cerrar Sesión
+    </ion-button>
   </ion-tab-bar>
 
   <ion-router-outlet></ion-router-outlet>
