@@ -1,0 +1,269 @@
+.reservation-info-label {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: #fff;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.5px;
+  background: rgba(34,34,34,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 8px 24px;
+}
+// New Reservation Page - Modern Form Design
+.form-container {
+  padding: var(--spacing-lg);
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.6s ease-out;
+
+
+.form-card {
+  margin-bottom: var(--spacing-xl);
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  animation: scaleIn 0.5s ease-out;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-accent);
+  }
+}
+
+  ion-card-header {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: transparent;
+    border-bottom: 1px solid var(--glass-border);
+
+    ion-card-title {
+      font-size: 22px;
+
+}
+
+.form-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: var(--spacing-lg);
+  --border-color: transparent;
+  --background: transparent;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-neutral-200);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-base);
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  ion-icon {
+    font-size: 22px;
+    color: var(--color-neutral-500);
+    margin: 0;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    transition: all var(--transition-base);
+    padding-left: 8px;
+    padding-right: 4px;
+  }
+  ion-label {
+    font-weight: 600;
+    font-family: var(--font-display);
+    color: var(--color-neutral-700);
+    font-size: 14px;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  ion-input,
+  ion-textarea {
+    --padding-start: var(--spacing-lg);
+    --padding-end: var(--spacing-lg);
+    --padding-top: var(--spacing-md);
+    --padding-bottom: var(--spacing-md);
+    font-family: var(--font-body);
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &.item-has-focus {
+    border-color: var(--color-primary-base);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+    ion-icon {
+      color: var(--color-primary-base);
+    }
+  }
+}
+    --padding-end: var(--spacing-md);
+    --padding-top: var(--spacing-md);
+    --padding-bottom: var(--spacing-md);
+    border: 2px solid var(--color-neutral-200);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-sm);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    transition: all var(--transition-base);
+    
+    &:focus,
+    &:focus-within {
+      border-color: var(--color-primary-base);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+    }
+    
+    &:hover:not(:focus) {
+      border-color: var(--color-neutral-300);
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  ion-textarea {
+    min-height: 120px;
+  }
+
+}
+
+.notes-item {
+  ion-icon {
+    align-self: flex-start;
+    margin-top: var(--spacing-md);
+  }
+}
+
+.form-note {
+  display: block;
+  margin-top: var(--spacing-lg);
+  font-size: 13px;
+  color: var(--color-neutral-500);
+  font-style: italic;
+  font-weight: 500;
+  padding: var(--spacing-md);
+  background: rgba(255, 184, 77, 0.1);
+  border-left: 3px solid var(--color-accent-base);
+  border-radius: var(--radius-sm);
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding: 0;
+
+  .action-button {
+    min-height: 56px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    --border-radius: var(--radius-md);
+    --box-shadow: var(--shadow-md);
+    --background: var(--gradient-primary);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    &:hover::before {
+      left: 100%;
+    }
+    
+    &:hover {
+      --box-shadow: var(--shadow-lg);
+    }
+
+    ion-icon {
+      margin-right: var(--spacing-sm);
+      font-size: 20px;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      --box-shadow: none;
+      
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  .cancel-button {
+    --background: transparent;
+    --background-hover: rgba(0, 0, 0, 0.04);
+    color: var(--color-neutral-700);
+    font-weight: 600;
+    border: none;
+    --box-shadow: none;
+    
+    &:hover {
+      border-color: var(--color-neutral-400);
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 576px) {
+  .form-container {
+    padding: 12px;
+  }
+
+  .form-card {
+    ion-card-header {
+      padding: 16px;
+    }
+    ion-card-title {
+      font-size: 16px;
+    }
+    ion-card-content {
+      padding: 12px;
+    }
+  }
+
+  .form-item {
+    margin-bottom: 16px;
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+
+  .button-group {
+    padding: 0;
+  }
+}

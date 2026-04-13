@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="products-grid">
+    @for (product of products; track product.id) {
+      <ion-card class="product-card" [attr.data-testid]="'product-item-' + product.id"></ion-card>
+        <ion-card-content>
+          <div class="product-header">
+            <div class="product-icon">
+              <ion-icon name="cube"></ion-icon>
+            </div>
+            <ion-badge [color]="getStockColor(product.stock)" class="stock-badge">
+              {{ product.stock }}
+            </ion-badge>
+          </div>
+
+          <h2 class="product-name">{{ product.name }}</h2>
+
+          <div class="product-meta">
+            <ion-chip class="category-chip" color="primary">
+              <ion-icon name="pricetag"></ion-icon>
+              <ion-label>{{ product.category }}</ion-label>
+            </ion-chip>
+          </div>
+
+          @if (product.description) {
+            <p class="product-description">{{ product.description }}</p>
+          }
+
+          <div class="product-footer">
+            <span class="product-price">{{ formatPrice(product.price) }}</span>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    }
+  </div>
+
+  <div class="action-section">
+    <ion-button 
+      (click)="logout()"
+      class="logout-button"
+      color="danger"
+      size="large"
+      data-testid="products-logout"
+    >
+      <ion-icon name="log-out" slot="start"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </div>
+</ion-content>

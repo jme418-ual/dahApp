@@ -1,0 +1,237 @@
+// Clients Page - Modern Glass Card Design
+:host {
+  pointer-events: auto;
+}
+
+ion-content {
+  --overflow: visible;
+  --padding-top: var(--spacing-xl);
+  --padding-bottom: var(--spacing-xl);
+  --padding-start: var(--spacing-md);
+  --padding-end: var(--spacing-md);
+  --background: transparent;
+}
+
+.clients-list {
+  --background: var(--ion-background-color);
+  background: var(--ion-background-color);
+  padding: 0;
+  margin: 0;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.client-item {
+  --padding-start: var(--spacing-lg);
+  --padding-end: var(--spacing-lg);
+  --inner-padding-end: 0;
+  --min-height: 120px;
+  margin: var(--spacing-sm) var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  --background: transparent;
+  background: var(--glass-background);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    border-color: rgba(255, 107, 107, 0.5);
+  }
+  
+  // Gradient accent
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--gradient-primary);
+    transform: scaleY(0);
+  }
+}
+
+.client-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-md);
+    background: var(--gradient-accent);
+    opacity: 0;
+    z-index: -1;
+  }
+
+  ion-icon {
+    font-size: 32px;
+    color: white;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+}
+
+ion-label {
+  font-family: var(--font-body);
+  
+  h2 {
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--ion-text-color);
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-display);
+    letter-spacing: -0.3px;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--color-neutral-400);
+    display: flex;
+    align-items: center;
+    margin: var(--spacing-xs) 0;
+    font-weight: 500;
+    pointer-events: none;
+
+    ion-icon {
+      font-size: 16px;
+      margin-right: var(--spacing-sm);
+      color: var(--color-primary-base);
+    }
+    
+    &:hover {
+      color: var(--color-neutral-400);
+      filter: none;
+    }
+  }
+}
+
+// Empty State (if needed)
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  
+  ion-icon {
+    font-size: 80px;
+    color: var(--color-neutral-300);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  h3 {
+    font-family: var(--font-display);
+    color: var(--color-neutral-600);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  p {
+    color: var(--color-neutral-500);
+    font-size: 15px;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  ion-content {
+    --padding-start: var(--spacing-lg);
+    --padding-end: var(--spacing-lg);
+    --padding-top: var(--spacing-lg);
+    --padding-bottom: var(--spacing-lg);
+  }
+  
+  .client-item {
+    --min-height: 100px;
+    margin-bottom: var(--spacing-md);
+    
+    &:hover {
+      box-shadow: var(--shadow-md);
+    }
+  }
+  
+  .client-avatar {
+    width: 56px;
+    height: 56px;
+    margin-right: var(--spacing-md);
+    
+    ion-icon {
+      font-size: 28px;
+    }
+  }
+  
+  ion-label {
+    h2 {
+      font-size: 17px;
+    }
+    
+    p {
+      font-size: 13px;
+      
+      ion-icon {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  ion-content {
+    --padding-start: var(--spacing-md);
+    --padding-end: var(--spacing-md);
+  }
+  
+  .client-item {
+    --padding-start: var(--spacing-md);
+    --padding-end: var(--spacing-md);
+  }
+  
+  .client-avatar {
+    width: 48px;
+    height: 48px;
+    
+    ion-icon {
+      font-size: 24px;
+    }
+  }
+  
+  ion-label {
+    h2 {
+      font-size: 16px;
+    }
+    
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+// Dark Mode Enhancements
+@media (prefers-color-scheme: dark) {
+  .client-item {
+    &:hover {
+      border-color: rgba(255, 107, 107, 0.4);
+    }
+  }
+  
+  ion-label {
+    p {
+      color: var(--color-neutral-400);
+      
+      &:hover {
+        color: var(--color-neutral-200);
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/reservations" data-testid="new-reservation-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nueva Reserva</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <ion-card class="form-card">
+        <ion-card-title>
+          <span class="reservation-info-label">Información de la Reserva</span>
+        </ion-card-title>
+
+      <ion-card-content>
+        <form>
+
+          <!-- Client Name Input (Login style) -->
+          <ion-item class="form-item">
+            <ion-icon name="person" slot="start" color="primary"></ion-icon>
+            <ion-input
+              [(ngModel)]="clientName"
+              name="clientName"
+              type="text"
+              autocomplete="name"
+              required
+              placeholder="Nombre del Cliente"
+            ></ion-input>
+          </ion-item>
+
+          <!-- Date Input (simple) -->
+          <ion-item class="form-item">
+            <ion-icon name="calendar" slot="start" color="primary"></ion-icon>
+            <ion-input
+              [(ngModel)]="date"
+              name="date"
+              type="datetime-local"
+              required
+              placeholder="Fecha y hora"
+            ></ion-input>
+          </ion-item>
+
+          <!-- Notes Input -->
+          <ion-item class="form-item notes-item">
+            <ion-icon name="document" slot="start" color="primary"></ion-icon>
+            <ion-label position="stacked">Notas</ion-label>
+            <ion-textarea
+              [(ngModel)]="notes"
+              name="notes"
+              placeholder="Ingrese detalles adicionales (opcional)"
+              rows="4"
+              [autoGrow]="true"
+            ></ion-textarea>
+          </ion-item>
+
+          <ion-note class="form-note">
+            * Campos obligatorios
+          </ion-note>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="saveReservation()"
+        [disabled]="!isFormValid()"
+        class="action-button"
+      >
+        <ion-icon name="save" slot="start"></ion-icon>
+        Guardar Reserva
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        color="light"
+        (click)="cancel()"
+        class="action-button cancel-button"
+      >
+        <ion-icon name="close" slot="start"></ion-icon>
+        Cancelar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

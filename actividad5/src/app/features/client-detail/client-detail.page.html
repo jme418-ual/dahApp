@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/clients" data-testid="client-detail-back"></ion-back-button>
+      <p class="client-id" data-testid="client-detail-id">ID: {{ client.id }}</p>
+    </ion-buttons>
+    <ion-title>Detalle del Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="detail-container">
+    @if (client) {
+      <ion-card class="client-card">
+        <ion-card-header>
+          <div class="card-header-content">
+            <div class="avatar-large">
+              <ion-icon name="person"></ion-icon>
+            </div>
+            <div class="header-text">
+              <ion-card-title>{{ client.name }}</ion-card-title>
+              <p class="client-id">ID: {{ client.id }}</p>
+            </div>
+          </div>
+        </ion-card-header>
+
+        <ion-card-content>
+          <div class="info-row">
+            <ion-icon name="mail" color="primary"></ion-icon>
+            <div class="info-content">
+              <span class="info-label">Email</span>
+              <span class="info-value">{{ client.email }}</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <ion-icon name="call" color="primary"></ion-icon>
+            <div class="info-content">
+              <span class="info-label">Teléfono</span>
+              <span class="info-value">{{ client.phone }}</span>
+            </div>
+          </div>
+
+          @if (client.address) {
+            <div class="info-row">
+              <ion-icon name="location" color="primary"></ion-icon>
+              <div class="info-content">
+                <span class="info-label">Dirección</span>
+                <span class="info-value">{{ client.address }}</span>
+              </div>
+            </div>
+          }
+        </ion-card-content>
+      </ion-card>
+    }
+
+    <!-- Client Not Found Message -->
+    @if (!client) {
+      <ion-card class="error-card">
+        <ion-card-content>
+          <ion-icon name="alertCircle" color="danger"></ion-icon>
+          <h2>Cliente No Encontrado</h2>
+          <p>No se encontró ningún cliente con el ID: <strong>{{ idParam }}</strong></p>
+        </ion-card-content>
+      </ion-card>
+    }
+  </div>
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-tabs>
+  <ion-tab-bar slot="top">
+    <div class="app-title">DAH APP</div>
+    
+    <div class="tabs-center">
+      <ion-tab-button tab="clients" href="/tabs/clients" data-testid="tab-clients">
+        <ion-label><ion-icon name="people"></ion-icon> Clientes</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="reservations" href="/tabs/reservations" data-testid="tab-reservations">
+        <ion-label><ion-icon name="calendar"></ion-icon> Reservas</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="products" href="/tabs/products" data-testid="tab-products">
+        <ion-label><ion-icon name="cube"></ion-icon> Productos</ion-label>
+      </ion-tab-button>
+
+      <ion-button (click)="logout()" fill="clear" class="logout-btn" data-testid="tabs-logout">
+        Cerrar Sesión
+      </ion-button>
+  </ion-tab-bar>
+
+  <ion-router-outlet></ion-router-outlet>
+</ion-tabs>
