@@ -10,6 +10,7 @@ export default defineConfig({
           root: './',
           sourceRoot: 'src',
           buildOptions: {
+            tsConfig: 'cypress/tsconfig.json',
             outputPath: 'dist/browser',
           }
         }

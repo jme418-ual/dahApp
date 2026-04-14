@@ -1,6 +1,10 @@
+/// <reference types="jasmine" />
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { TabsPage } from './tabs.page';
+
+const jasmineExpect = expect as unknown as <T>(actual: T) => jasmine.Matchers<T>;
 
 describe('TabsPage', () => {
   let component: TabsPage;
@@ -20,27 +24,27 @@ describe('TabsPage', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    jasmineExpect(component).toBeTruthy();
   });
 
   it('should show the three tab labels', () => {
     const text = element.textContent ?? '';
-    expect(text).toContain('Clientes');
-    expect(text).toContain('Reservas');
-    expect(text).toContain('Productos');
+    jasmineExpect(text).toContain('Clientes');
+    jasmineExpect(text).toContain('Reservas');
+    jasmineExpect(text).toContain('Productos');
   });
 
   it('should show the correct icons for each tab', () => {
     const icons = Array.from(element.querySelectorAll('ion-tab-button ion-icon'))
       .map(icon => icon.getAttribute('name'));
 
-    expect(icons).toContain('people');
-    expect(icons).toContain('calendar');
-    expect(icons).toContain('cube');
+    jasmineExpect(icons).toContain('people');
+    jasmineExpect(icons).toContain('calendar');
+    jasmineExpect(icons).toContain('cube');
   });
 
   it('should show the logout button', () => {
     const text = element.textContent ?? '';
-    expect(text).toContain('Cerrar Sesión');
+    jasmineExpect(text).toContain('Cerrar Sesión');
   });
 });

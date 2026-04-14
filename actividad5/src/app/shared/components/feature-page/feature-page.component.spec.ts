@@ -1,5 +1,9 @@
+/// <reference types="jasmine" />
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeaturePageComponent } from './feature-page.component';
+
+const jasmineExpect = expect as unknown as <T>(actual: T) => jasmine.Matchers<T>;
 
 describe('FeaturePageComponent', () => {
   let component: FeaturePageComponent;
@@ -23,13 +27,13 @@ describe('FeaturePageComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    jasmineExpect(component).toBeTruthy();
   });
 
   it('should render title, name and description', () => {
     const text = element.textContent ?? '';
-    expect(text).toContain('Página de prueba');
-    expect(text).toContain('Clientes');
-    expect(text).toContain('Listado de clientes');
+    jasmineExpect(text).toContain('Página de prueba');
+    jasmineExpect(text).toContain('Clientes');
+    jasmineExpect(text).toContain('Listado de clientes');
   });
 });

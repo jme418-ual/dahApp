@@ -1,3 +1,6 @@
+/// <reference types="cypress" />
+/// <reference path="../../../../cypress/support/component.ts" />
+
 import { ClientsPage } from './clients.page';
 
 describe('ClientsPage Component', () => {

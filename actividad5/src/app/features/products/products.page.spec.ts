@@ -1,5 +1,9 @@
+/// <reference types="jasmine" />
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductsPage } from './products.page';
+
+const jasmineExpect = expect as unknown as <T>(actual: T) => jasmine.Matchers<T>;
 
 describe('ProductsPage', () => {
   let component: ProductsPage;
@@ -18,28 +22,28 @@ describe('ProductsPage', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    jasmineExpect(component).toBeTruthy();
   });
 
   it('should load products from the service', () => {
-    expect(component.products).toBeTruthy();
-    expect(component.products.length).toBeGreaterThan(0);
+    jasmineExpect(component.products).toBeTruthy();
+    jasmineExpect(component.products.length).toBeGreaterThan(0);
   });
 
   it('should render one card per product', () => {
     const cards = element.querySelectorAll('ion-card.product-card');
-    expect(cards.length).toBe(component.products.length);
+    jasmineExpect(cards.length).toBe(component.products.length);
   });
 
   it('should render the first product name', () => {
     const firstProduct = component.products[0];
     const text = element.textContent ?? '';
 
-    expect(text).toContain(firstProduct.name);
+    jasmineExpect(text).toContain(firstProduct.name);
   });
 
   it('should show the logout button', () => {
     const text = element.textContent ?? '';
-    expect(text).toContain('Cerrar Sesión');
+    jasmineExpect(text).toContain('Cerrar Sesión');
   });
 });

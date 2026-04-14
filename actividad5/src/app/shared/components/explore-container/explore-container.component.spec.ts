@@ -1,5 +1,9 @@
+/// <reference types="jasmine" />
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExploreContainerComponent } from './explore-container.component';
+
+const jasmineExpect = expect as unknown as <T>(actual: T) => jasmine.Matchers<T>;
 
 describe('ExploreContainerComponent', () => {
   let component: ExploreContainerComponent;
@@ -22,12 +26,12 @@ describe('ExploreContainerComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    jasmineExpect(component).toBeTruthy();
   });
 
   it('should render required inputs', () => {
     const text = element.textContent ?? '';
-    expect(text).toContain('Clientes');
-    expect(text).toContain('Listado de clientes');
+    jasmineExpect(text).toContain('Clientes');
+    jasmineExpect(text).toContain('Listado de clientes');
   });
 });
