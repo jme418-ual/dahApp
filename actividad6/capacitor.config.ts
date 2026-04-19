@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'es.ual.dah.nativeops',
-  appName: 'nativeOpsApp',
+  appId: 'com.example.app',
+  appName: 'act6',
   webDir: 'www'
 };
 

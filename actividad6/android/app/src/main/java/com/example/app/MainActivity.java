@@ -1,4 +1,4 @@
-package es.ual.dah.nativeops;
+package com.example.app;
 
 import com.getcapacitor.BridgeActivity;
 
