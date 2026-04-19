@@ -42,10 +42,10 @@ h2 {
   text-align: center;
   margin-bottom: var(--spacing-lg);
   padding: var(--spacing-lg);
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--app-surface);
   backdrop-filter: blur(8px);
   border-radius: var(--radius-lg);
-  border: 2px dashed var(--glass-border);
+  border: 2px dashed var(--app-border);
   animation: fadeIn 0.4s ease-out;
 }
 
@@ -66,13 +66,12 @@ h2 {
 
 .placeholder-box p,
 .photo-result p {
-  color: var(--color-neutral-600);
+  color: var(--app-text-muted);
   font-weight: 500;
   font-size: 0.95rem;
   margin: 0;
 }
 
-// Form inputs styling
 ion-item {
   --padding-start: 0;
   --inner-padding-end: 0;
@@ -80,8 +79,8 @@ ion-item {
   --border-color: transparent;
   --background: transparent;
   border-radius: var(--radius-md);
-  border: 2px solid var(--color-neutral-200);
-  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(23, 23, 23, 0.08);
+  background: var(--app-surface);
   backdrop-filter: blur(8px);
   transition: all var(--transition-base);
   overflow: hidden;
@@ -116,7 +115,7 @@ ion-item {
 
   &.item-has-focus {
     border-color: var(--color-primary-base);
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--app-surface-strong);
     box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
 
     ion-icon {
@@ -125,8 +124,8 @@ ion-item {
   }
 
   &:hover:not(.item-has-focus) {
-    border-color: var(--color-neutral-300);
-    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(23, 23, 23, 0.12);
+    background: var(--app-surface-strong);
   }
 }
 
@@ -134,7 +133,6 @@ ion-textarea {
   min-height: 120px !important;
 }
 
-// Button group styling
 .button-group {
   display: flex;
   flex-direction: column;
@@ -206,7 +204,6 @@ ion-textarea {
   }
 }
 
-// Form note styling
 .form-note {
   display: block;
   margin-top: var(--spacing-lg);
@@ -220,7 +217,6 @@ ion-textarea {
   border-radius: var(--radius-sm);
 }
 
-// Responsive design
 @media (max-width: 576px) {
   .capture-card {
     padding: var(--spacing-lg);
@@ -245,4 +241,26 @@ ion-textarea {
       padding-left: var(--spacing-sm);
     }
   }
+}
+
+.floating-feedback {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 70px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: calc(100% - 32px);
+  max-width: 420px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  font-weight: 500;
+  text-align: center;
+  pointer-events: none;
+}
+
+.success-feedback {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #c8e6c9;
 }

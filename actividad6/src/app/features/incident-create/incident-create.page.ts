@@ -16,6 +16,8 @@ import { CameraPhotoService } from '../../core/services/camera-photo.service';
 import { IncidentStorageService } from '../../core/services/incident-storage.service';
 import { ToastService } from '../../core/services/toast.service';
 
+type LocationStatus = 'idle' | 'loading' | 'ok' | 'unavailable';
+
 @Component({
   selector: 'app-incident-create',
   standalone: true,
@@ -43,6 +45,9 @@ export class IncidentCreatePage implements OnInit {
   readonly photoUri = signal<string | null>(null);
   readonly latitude = signal<number | null>(null);
   readonly longitude = signal<number | null>(null);
+  readonly locationStatus = signal<LocationStatus>('idle');
+  readonly isCapturing = signal(false);
+  readonly feedbackMessage = signal<string | null>(null);
 
   readonly hasPhoto = computed(() => !!this.photoUri());
 
@@ -51,25 +56,46 @@ export class IncidentCreatePage implements OnInit {
   }
 
   async captureIncident(): Promise<void> {
-    try {
-      const result = await this.cameraPhotoService.capturePhotoWithLocation();
+    if (this.isCapturing()) {
+      return;
+    }
 
-      this.photoUri.set(result.photoUri);
-      this.latitude.set(result.latitude);
-      this.longitude.set(result.longitude);
+    this.isCapturing.set(true);
+
+    try {
+      const photoUri = await this.cameraPhotoService.capturePhoto();
+
+      this.photoUri.set(photoUri);
+      this.latitude.set(null);
+      this.longitude.set(null);
+      this.locationStatus.set('loading');
+
+      const location = await this.cameraPhotoService.getLocation();
+
+      this.latitude.set(location.latitude);
+      this.longitude.set(location.longitude);
+
+      if (location.latitude !== null && location.longitude !== null) {
+        this.locationStatus.set('ok');
+      } else {
+        this.locationStatus.set('unavailable');
+      }
 
       await this.incidentStorageService.saveIncident({
         id: crypto.randomUUID(),
-        photoUri: result.photoUri,
-        latitude: result.latitude,
-        longitude: result.longitude,
+        photoUri,
+        latitude: location.latitude ?? 0,
+        longitude: location.longitude ?? 0,
         createdAt: new Date().toISOString(),
       });
 
-      await this.toastService.show('Incidencia guardada correctamente');
+      this.isCapturing.set(false);
+      this.toastService.show('Incidencia guardada correctamente');
     } catch (error) {
       console.error(error);
-      await this.toastService.show('No se pudo capturar la incidencia');
+      this.locationStatus.set('idle');
+      this.isCapturing.set(false);
+      this.toastService.show('No se pudo capturar la incidencia');
     }
   }
 

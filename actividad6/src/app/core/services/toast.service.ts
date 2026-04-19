@@ -1,19 +1,24 @@
-import { Injectable, inject } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { Injectable } from '@angular/core';
+import { Toast } from '@capacitor/toast';
+import { Capacitor } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToastService {
-  private toastController = inject(ToastController);
-
   async show(message: string): Promise<void> {
-    const toast = await this.toastController.create({
-      message,
-      duration: 2000,
-      position: 'bottom',
-    });
+    try {
+      if (Capacitor.isNativePlatform()) {
+        await Toast.show({
+          text: message,
+          duration: 'short',
+        });
+        return;
+      }
 
-    await toast.present();
+      console.log(message);
+    } catch (error) {
+      console.error('Error al mostrar el mensaje:', error);
+    }
   }
 }

@@ -1,7 +1,7 @@
 export interface Incident {
   id: string;
   photoUri: string;
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
   createdAt: string;
 }

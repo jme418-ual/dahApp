@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import {
   IonContent,
   IonHeader,
@@ -43,13 +43,15 @@ export class IncidentListPage implements OnInit {
   private router = inject(Router);
 
   readonly incidents = this.incidentStorageService.incidents;
+  readonly feedbackMessage = signal<string | null>(null);
 
   async ngOnInit(): Promise<void> {
     await this.incidentStorageService.load();
   }
 
   async onItemClick(): Promise<void> {
-    await this.toastService.show('En construcción');
+    const message = 'En construcción';
+    this.toastService.show(message);
   }
 
   goBack(): void {
