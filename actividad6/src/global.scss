@@ -33,7 +33,7 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+@import '@ionic/angular/css/palettes/dark.system.css';
 
 /**
  * Custom Global Styles - Modern Design System
@@ -50,7 +50,7 @@ ion-router-outlet {
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
+  color-scheme: light dark;
 }
 
 html,

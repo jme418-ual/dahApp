@@ -26,7 +26,7 @@
         @if (incidents().length > 0) {
           <ion-list>
             @for (incident of incidents(); track incident.id) {
-              <ion-item button detail="true">
+              <ion-item button detail="true" (click)="onItemClick()">
                 <ion-label>
                   <h3>Incidencia {{ incident.id.slice(0, 8) }}</h3>
                   <p>Lat: {{ incident.latitude }} | Lng: {{ incident.longitude }}</p>

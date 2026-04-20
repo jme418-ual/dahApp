@@ -8,12 +8,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="incident-content">
-  @if (feedbackMessage()) {
-    <div class="floating-feedback success-feedback">
-      {{ feedbackMessage() }}
-    </div>
-  }
-
   <div class="page-wrapper">
     <ion-card class="capture-card">
       <ion-card-content>
@@ -29,31 +23,21 @@
           </div>
         } @else {
           <div class="photo-result">
-            <img [src]="photoUri()!" alt="Foto de la incidencia" class="result-image" />
+            <img
+              [src]="photoUri()!"
+              alt="Foto de la incidencia"
+              class="result-image"
+            />
 
             <ion-text>
-              @if (locationStatus() === 'loading') {
-                <p><strong>Ubicación:</strong> obteniendo ubicación...</p>
-              }
-
-              @if (locationStatus() === 'ok') {
-                <p><strong>Latitud:</strong> {{ latitude() }}</p>
-                <p><strong>Longitud:</strong> {{ longitude() }}</p>
-              }
-
-              @if (locationStatus() === 'unavailable') {
-                <p><strong>Ubicación:</strong> no disponible</p>
-              }
+              <p><strong>Latitud:</strong> {{ latitude() }}</p>
+              <p><strong>Longitud:</strong> {{ longitude() }}</p>
             </ion-text>
           </div>
         }
 
-        <ion-button expand="block" (click)="captureIncident()" [disabled]="isCapturing()">
-          @if (isCapturing()) {
-            Procesando incidencia...
-          } @else {
-            Obtener foto y ubicación
-          }
+        <ion-button expand="block" (click)="captureIncident()">
+          Obtener foto y ubicación
         </ion-button>
       </ion-card-content>
     </ion-card>

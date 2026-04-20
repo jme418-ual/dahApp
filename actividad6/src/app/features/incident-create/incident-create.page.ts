@@ -16,8 +16,6 @@ import { CameraPhotoService } from '../../core/services/camera-photo.service';
 import { IncidentStorageService } from '../../core/services/incident-storage.service';
 import { ToastService } from '../../core/services/toast.service';
 
-type LocationStatus = 'idle' | 'loading' | 'ok' | 'unavailable';
-
 @Component({
   selector: 'app-incident-create',
   standalone: true,
@@ -45,9 +43,6 @@ export class IncidentCreatePage implements OnInit {
   readonly photoUri = signal<string | null>(null);
   readonly latitude = signal<number | null>(null);
   readonly longitude = signal<number | null>(null);
-  readonly locationStatus = signal<LocationStatus>('idle');
-  readonly isCapturing = signal(false);
-  readonly feedbackMessage = signal<string | null>(null);
 
   readonly hasPhoto = computed(() => !!this.photoUri());
 
@@ -56,46 +51,52 @@ export class IncidentCreatePage implements OnInit {
   }
 
   async captureIncident(): Promise<void> {
-    if (this.isCapturing()) {
-      return;
-    }
-
-    this.isCapturing.set(true);
-
     try {
-      const photoUri = await this.cameraPhotoService.capturePhoto();
+      const result = await this.cameraPhotoService.capturePhotoWithLocation();
 
-      this.photoUri.set(photoUri);
-      this.latitude.set(null);
-      this.longitude.set(null);
-      this.locationStatus.set('loading');
-
-      const location = await this.cameraPhotoService.getLocation();
-
-      this.latitude.set(location.latitude);
-      this.longitude.set(location.longitude);
-
-      if (location.latitude !== null && location.longitude !== null) {
-        this.locationStatus.set('ok');
-      } else {
-        this.locationStatus.set('unavailable');
-      }
+      this.photoUri.set(result.photoUri);
+      this.latitude.set(result.latitude);
+      this.longitude.set(result.longitude);
 
       await this.incidentStorageService.saveIncident({
         id: crypto.randomUUID(),
-        photoUri,
-        latitude: location.latitude ?? 0,
-        longitude: location.longitude ?? 0,
+        photoUri: result.photoUri,
+        latitude: result.latitude,
+        longitude: result.longitude,
         createdAt: new Date().toISOString(),
       });
 
-      this.isCapturing.set(false);
-      this.toastService.show('Incidencia guardada correctamente');
-    } catch (error) {
+      await this.toastService.show('Incidencia guardada correctamente');
+    } catch (error: any) {
       console.error(error);
-      this.locationStatus.set('idle');
-      this.isCapturing.set(false);
-      this.toastService.show('No se pudo capturar la incidencia');
+
+      if (error?.code === 'camera_denied') {
+        await this.toastService.show('Debes conceder permiso de cámara para crear la incidencia');
+        return;
+      }
+
+      if (error?.code === 'camera_denied_permanently') {
+        await this.toastService.show(
+          'El permiso de cámara está bloqueado. Actívalo en ajustes del dispositivo'
+        );
+        return;
+      }
+
+      if (error?.code === 'location_denied') {
+        await this.toastService.show(
+          'Debes conceder permiso de ubicación para guardar la incidencia'
+        );
+        return;
+      }
+
+      if (error?.code === 'location_denied_permanently') {
+        await this.toastService.show(
+          'El permiso de ubicación está bloqueado. Actívalo en ajustes del dispositivo'
+        );
+        return;
+      }
+
+      await this.toastService.show('No se pudo capturar la incidencia');
     }
   }
 
